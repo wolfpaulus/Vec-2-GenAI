@@ -392,13 +392,3 @@ So:
 - **Demo 3**: Adding a third dimension, preparing for high-dimensional embeddings.
 
 Next: scaling this up leads to **Word2Vec, transformers, and eventually ChatGPT.**
-
----
-
-```
-
----
-
-This should fit well in a **30-minute talk with three demos**.
-Do you want me to also create a **“timed outline” version** (e.g. 5 min per section, demo cues, transition lines) so you can better pace yourself?
-```
