@@ -95,7 +95,7 @@ Example: words similar to **`norway`**
 * swedish: 0.7556
 * switzerland: 0.7530
 
-GloVe vectors but projects them into 2D:
+GloVe vectors projected into 2D:
 
 ![alt text](img/sim_plot.png)
 
@@ -115,7 +115,6 @@ def outlier(v: dict[str, np.ndarray], words: list[str]) -> str:
 Example: `["car", "truck", "house", "bike"]`
 Outlier: **`house`**
 
-GloVe vectors but projects them into 2D:
 ![alt text](img/outlier_plot.png)
 
 ---
@@ -133,8 +132,6 @@ def analogy(v: dict[str, np.ndarray], words: list[str]) -> str:
 
 Example: `["berlin", "germany", "paris"]`
 Answer: **`france`**
-
-GloVe vectors but projects them into 2D:
 
 ![alt text](img/analogy_plot.png)
 
