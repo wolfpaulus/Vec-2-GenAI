@@ -138,6 +138,22 @@ GloVe vectors but projects them into 2D:
 
 ![alt text](img/analogy_plot.png)
 
+---
+
+### Limits of GloVe (Why It’s Not Enough)
+
+GloVe is powerful — it groups similar words together, but also shallow: it only uses co-occurrence statistics.
+Words like apple are ambiguous: fruit vs. company
+GloVe can’t separate those meanings → "apple" might sit awkwardly between fruits and tech companies.
+No context → the model doesn’t know if “apple is delicious” vs. “Apple released iOS 19.”
+
+![alt text](img/ambiguous.png)
+
+See how the fruits and tech companies are kind of in the same space?
+That's because GloVe has only one vector per word. It doesn’t know whether we’re talking about ‘Apple the fruit’ or ‘Apple the company.’
+This is the weakness of static embeddings. It’s why newer models, like transformers, moved to contextual embeddings — where the meaning of a word changes depending on the sentence.
+
+Contextual embeddings. Models like BERT and GPT don’t give you one fixed vector — they generate a vector that changes depending on the sentence. That’s where we’ll go next.”
 
 ---
 
