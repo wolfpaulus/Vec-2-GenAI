@@ -20,7 +20,7 @@ def preprocess(in_filepath: str, out_filepath: str) -> None:
     """
     # Load the set of frequent words
     frequent_words = set()
-    with open("./model/unigram_freq.csv", "r", encoding="utf8") as f:
+    with open("./models/unigram_freq.csv", "r", encoding="utf8") as f:
         for line in f:
             frequent_words.add(line.strip().split(",")[0].lower())
 
