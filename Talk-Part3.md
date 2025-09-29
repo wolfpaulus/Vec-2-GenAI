@@ -181,6 +181,58 @@ Best Answer: The crew had mixed loyalties.
 
 ---
 
+Final Demo: From Vectors to Language
+
+```python
+""" Simple example of using SentenceTransformers and HuggingFace Transformers."""
+from transformers import pipeline
+
+generator = pipeline("text-generation", model="gpt2")
+prompt = "Not all heroes"
+print("Start:", prompt)
+
+for _ in range(10):  # number of steps to grow the sentence
+    outputs = generator(
+        prompt,
+        max_new_tokens=1,   # just one token at a time
+        num_return_sequences=1,
+        temperature=2.5,    # higher = more random, lower = more greedy
+        do_sample=False     # always take the most likely next token
+    )
+    prompt = outputs[0]["generated_text"]
+    print("→", prompt)
+```
+
+**Not all heroes**
+
+```text
+Device set to use mps:0
+Start: Not all heroes
+The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+→ Not all heroes are
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+→ Not all heroes are created
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+→ Not all heroes are created equal
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+→ Not all heroes are created equal.
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+→ Not all heroes are created equal. Some
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+→ Not all heroes are created equal. Some are
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+→ Not all heroes are created equal. Some are better
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+→ Not all heroes are created equal. Some are better than
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+→ Not all heroes are created equal. Some are better than others
+Setting `pad_token_id` to `eos_token_id`:50256 for open-end generation.
+→ Not all heroes are created equal. Some are better than others.
+```
+
+**Not all heroes are created equal. Some are better than others.**
+
 ## From Vectors to ChatGPT
 
 The journey from simple word vectors to powerful AI like ChatGPT:
