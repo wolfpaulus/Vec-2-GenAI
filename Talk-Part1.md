@@ -1,9 +1,5 @@
 
-# Title
-
-- From Numbers to Meaning: The Building Blocks of Generative AI
-.. or ..
-- From Vectors to ChatGPT
+# From Vectors to ChatGPT: The Building Blocks of Generative AI
 
 ## Objectives
 
