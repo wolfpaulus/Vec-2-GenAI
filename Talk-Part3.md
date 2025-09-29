@@ -81,6 +81,7 @@ Similarity ((money) bank, coins stored): 0.4289
 
 ![alt text](img/sbert.png)
 
+(blue distances are shorter = more similar)
 ---
 
 #### What’s Stored in a Transformer?
@@ -114,7 +115,7 @@ Think of transformers as a **recipe book**: the rules (weights) are stored, and 
   - Context window: 2,048 tokens
   - 96 layers, 12,288 dimensions
 
-- **Modern Transformers (GPT-4, GPT-5)*
+- **Modern Transformers (GPT-4, GPT-5)**
   - Context windows >100,000 tokens
   - Large numbers of layers and dimensions
   - Can handle books or long conversations in a single pass
