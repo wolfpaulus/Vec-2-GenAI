@@ -1,6 +1,4 @@
-"""
-2-Dimensional Distributed Representation of Words
-"""
+""" 2-Dimensional Distributed Representation of Words """
 import numpy as np
 import matplotlib.pyplot as plt
 

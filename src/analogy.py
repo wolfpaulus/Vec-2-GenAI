@@ -20,11 +20,11 @@ def load_vectors(filepath: str) -> dict[str, np.ndarray]:
     return word_vectors
 
 
-def analogy(v: dict[str, np.ndarray], words: list[str]) -> str:
+def analogy(words: list[str], v: dict[str, np.ndarray]) -> str:
     """
     Finds the missing word in an analogy:
-    :param vectors: Dictionary of word vectors
     :param words: List of three words [word1, word2, word3]
+    :param vectors: Dictionary of word vectors
     :return: The word that best completes the analogy 1 is to 2 as 3 is to ?
     """
     target = v[words[2]] - v[words[0]] + v[words[1]]  # e.g.: KING - QUEEN == MAN - WOMAN
@@ -34,16 +34,15 @@ def analogy(v: dict[str, np.ndarray], words: list[str]) -> str:
 
 
 if __name__ == "__main__":
-    if len(argv) != 2:
-        print("Usage: python src/analogy.py <glove_filepath>")
-        exit(1)
-    vectors = load_vectors(argv[1])
+    mdl = "models/wikigiga_50d.txt" if len(argv) != 2 else argv[1]
+    vectors = load_vectors(mdl)
+    print(f"Loaded {len(vectors):,} word vectors from {mdl}")
     while True:
         words = input("Enter 3 words like 'king queen man': ").strip().lower().split()
         if len(words) != 3:
             print("Please enter exactly 3 words.")
             continue
         try:
-            print(f"{words[0]} is to {words[1]} as {words[2]} is to {analogy(vectors, words)}\n")
+            print(f"{words[0]} is to {words[1]} as {words[2]} is to {analogy(words, vectors)}\n")
         except KeyError as e:
             print(f"'{e}' was not found in the vocabulary")

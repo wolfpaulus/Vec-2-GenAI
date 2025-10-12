@@ -19,7 +19,7 @@ def load_vectors(filepath: str) -> dict[str, np.ndarray]:
     return word_vectors
 
 
-def outlier(v: dict[str, np.ndarray], words: list[str]) -> str:
+def outlier(words: list[str], v: dict[str, np.ndarray]) -> str:
     """
     Finds the outlier word in a list of words:
     :param vectors: Dictionary of word vectors
@@ -36,17 +36,16 @@ def outlier(v: dict[str, np.ndarray], words: list[str]) -> str:
 
 
 if __name__ == "__main__":
-    if len(argv) != 2:
-        print("Usage: python src/outlier.py <glove_filepath>")
-        exit(1)
-    vectors = load_vectors(argv[1])
+    mdl = "models/wikigiga_50d.txt" if len(argv) != 2 else argv[1]
+    vectors = load_vectors(mdl)
+    print(f"Loaded {len(vectors):,} word vectors from {mdl}")
     while True:
         words = input(
-            "Enter more than 3 words like 'berlin paris london munich': ").strip().lower().split()
+            "Enter more than 3 words like 'car bike house plane': ").strip().lower().split()
         if len(words) <= 3:
             print("Please enter more than 3 words.")
             continue
         try:
-            print(f"The outlier is: {outlier(vectors, words)}\n")
+            print(f"The outlier is: {outlier(words, vectors)}\n")
         except KeyError as e:
             print(f"'{e}' was not found in the vocabulary")

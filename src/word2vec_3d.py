@@ -17,7 +17,6 @@ def softmax(z: np.ndarray) -> np.ndarray:
 # --- Vocabulary and Corpus ---
 vocab = ["apple", "mango", "orange", "fruit",  "broccoli",
          "potato", "spinach", "vegetable", "soft", "firm"]
-one_hot = np.diag(np.ones(len(vocab)))  # one-hot vectors
 pairs = [
     ("apple", "fruit"),
     ("mango", "fruit"),
@@ -39,6 +38,7 @@ N = 3            # embedding dimensions (hidden layer size)
 epochs = 300     # training cycles
 lr = 0.05        # learning rate
 
+one_hot = np.diag(np.ones(len(vocab)))  # one-hot vectors
 W = np.random.uniform(-1, 1, (V, N))
 U = np.random.uniform(-1, 1, (N, V))
 

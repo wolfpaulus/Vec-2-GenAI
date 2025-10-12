@@ -1,11 +1,8 @@
-"""
-Tiny Word Embedding Trainer (inputs-only update)
-"""
+""" Tiny Word Embedding Trainer (inputs-only update) """
 import numpy as np
 
 # --- Vocabulary and Corpus ---
 vocab = ["apple", "mango", "orange", "fruit", "broccoli", "potato", "spinach", "vegetable"]
-
 pairs = [
     ("apple", "fruit"),
     ("mango", "fruit"),
