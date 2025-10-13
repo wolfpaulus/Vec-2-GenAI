@@ -26,7 +26,8 @@ def most_similar(word: str, v: dict[str, np.ndarray], top_k: int = 10) -> list[t
     :return: List of tuples (word, similarity) sorted by similarity in descending order
     """
     sims = []
-    if target := v.get(word):
+    target = v.get(word)
+    if target is not None:
         for w, vec in v.items():  # Iterate over all word vectors
             if w != word:
                 similarity = np.dot(target, vec)  # cosine similarity for normalized vectors
@@ -44,6 +45,8 @@ if __name__ == "__main__":
     print(f"Loaded {len(vectors):,} word vectors from {mdl}")
     while True:
         target_word = input("Enter a word to find similar words: ").strip().lower()
+        if target_word == "":
+            break
         neighbors = most_similar(target_word, vectors)
         print(f"\nTop {len(neighbors)} words similar to '{target_word}':")
         for wrd, sim in neighbors:

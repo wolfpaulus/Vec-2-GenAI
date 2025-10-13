@@ -39,6 +39,8 @@ if __name__ == "__main__":
     print(f"Loaded {len(vectors):,} word vectors from {mdl}")
     while True:
         words = input("Enter 3 words like 'king queen man': ").strip().lower().split()
+        if len(words) == 0:
+            break
         if len(words) != 3:
             print("Please enter exactly 3 words.")
             continue

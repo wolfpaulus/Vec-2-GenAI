@@ -42,6 +42,8 @@ if __name__ == "__main__":
     while True:
         words = input(
             "Enter more than 3 words like 'car bike house plane': ").strip().lower().split()
+        if len(words) == 0:
+            break
         if len(words) <= 3:
             print("Please enter more than 3 words.")
             continue

@@ -29,6 +29,9 @@ For perspective: English dictionaries like Merriam-Webster list ~470,000 words
 ## How Training Data Is Created
 
 Given a specific word in the middle of a sentence, the model looks at its neighbors in a context window. This builds up co-occurrence statistics: which words tend to show up together.
+
+Think of co-occurrence statistics as “counting buddies” — it’s just tracking how often two things show up together, like words in a sentence or animals in the same habitat.
+
 ![alt text](img/pairs.png)
 Example: *“The quick brown fox jumps over the lazy dog.”*
 With a context window of 2, the input word `fox` gets paired with `quick`, `brown`, `jumps`, `over`.

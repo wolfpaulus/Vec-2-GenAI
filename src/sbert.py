@@ -4,10 +4,10 @@ from sklearn.decomposition import PCA
 from sentence_transformers import SentenceTransformer, util
 
 # Load a small pre-trained transformer
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = SentenceTransformer("all-MiniLM-L6-v2", local_files_only=True)  # use local cache only
 sentences = [
     "He sat on the river bank.",
-    "She deposited money at the bank.",
+    "She borrowed money from the bank.",
     "The boat was tied to the shore.",
     "The check was safely deposited."
 ]
