@@ -1,4 +1,4 @@
-""" Download GPT model for local use."""
+""" Download GPT model for local use. """
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 # Specify the model you want to download

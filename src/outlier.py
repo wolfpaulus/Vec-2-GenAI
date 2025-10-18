@@ -21,15 +21,13 @@ def load_vectors(filepath: str) -> dict[str, np.ndarray]:
 
 def outlier(words: list[str], v: dict[str, np.ndarray]) -> str:
     """
-    Finds the outlier word in a list of words:
-    :param vectors: Dictionary of word vectors
+    Finds the outlier word in a list of words, assumes the input word vectors are normalized.
     :param words: List of words (more than 3)
+    :param v: Dictionary of word vectors
     :return: The word that is least similar to the others
     """
     # Compute the mean vector of all words
     mean_vector = np.mean([v[word] for word in words], axis=0)
-    mean_vector /= np.linalg.norm(mean_vector)  # normalize the mean vector
-
     # Find the word with the smallest cosine similarity to the mean vector
     outlier_word = min(words, key=lambda w: np.dot(v[w], mean_vector))
     return outlier_word

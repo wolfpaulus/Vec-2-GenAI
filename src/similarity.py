@@ -19,7 +19,7 @@ def load_vectors(filepath: str) -> dict[str, np.ndarray]:
 
 def most_similar(word: str, v: dict[str, np.ndarray], top_k: int = 10) -> list[tuple[str, float]]:
     """
-    Find the top_k most similar words to the word based on cosine similarity
+    Find the top_k most similar words to the given word based on cosine similarity
     :param word: The word to find similar words for
     :param v: Dictionary of word vectors
     :param top_k: Number of similar words to return
@@ -28,10 +28,10 @@ def most_similar(word: str, v: dict[str, np.ndarray], top_k: int = 10) -> list[t
     sims = []
     target = v.get(word)
     if target is not None:
-        for w, vec in v.items():  # Iterate over all word vectors
+        for w, vec in v.items():  # Iterate over all word vectors (those are normalized already)
             if w != word:
-                similarity = np.dot(target, vec)  # cosine similarity for normalized vectors
-                if len(sims) < top_k or similarity > sims[-1][1]:
+                similarity = np.dot(target, vec)  # compare with the target word
+                if len(sims) < top_k or similarity > sims[-1][1]:  # only keep top_k
                     sims.append((w, similarity))
                     sims.sort(reverse=True, key=lambda x: x[1])  # keep sorted
                     if len(sims) > top_k:

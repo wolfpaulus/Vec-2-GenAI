@@ -3,3 +3,4 @@ models/*.txt
 */.DS_Store
 .DS_Store
 src/__pycache__/
+models/gpt2-*/
