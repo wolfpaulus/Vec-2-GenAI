@@ -32,7 +32,7 @@ pairs = [
     ("spinach", "soft"),
 ]
 
-# --- Model parameters ---
+# --- Hyperparameters ---
 V = len(vocab)   # vocabulary size
 N = 3            # embedding dimensions (hidden layer size)
 epochs = 300     # training cycles

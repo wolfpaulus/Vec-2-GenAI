@@ -1,6 +1,4 @@
-"""
-Finding the outlier in a list of words using preprocessed GloVe embeddings.
-"""
+""" Finding the outlier in a list of words using preprocessed GloVe embeddings. """
 from sys import argv
 import numpy as np
 
@@ -11,7 +9,7 @@ def load_vectors(filepath: str) -> dict[str, np.ndarray]:
     :param filepath: Path to the GloVe file (preprocessed and normalized)
     :return: Dictionary mapping words to their vector representations
     """
-    word_vectors = dict()
+    word_vectors = {}
     with open(filepath, "r", encoding="utf8") as f:
         for line in f:
             parts = line.split()
@@ -19,17 +17,17 @@ def load_vectors(filepath: str) -> dict[str, np.ndarray]:
     return word_vectors
 
 
-def outlier(words: list[str], v: dict[str, np.ndarray]) -> str:
+def outlier(wrds: list[str], vecs: dict[str, np.ndarray]) -> str:
     """
     Finds the outlier word in a list of words, assumes the input word vectors are normalized.
-    :param words: List of words (more than 3)
-    :param v: Dictionary of word vectors
+    :param wrds: List of words (more than 3)
+    :param vecs: Dictionary of word vectors
     :return: The word that is least similar to the others
     """
     # Compute the mean vector of all words
-    mean_vector = np.mean([v[word] for word in words], axis=0)
+    mean_vector = np.mean([vecs[word] for word in wrds], axis=0)
     # Find the word with the smallest cosine similarity to the mean vector
-    outlier_word = min(words, key=lambda w: np.dot(v[w], mean_vector))
+    outlier_word = min(wrds, key=lambda w: np.dot(vecs[w], mean_vector))
     return outlier_word
 
 
