@@ -45,7 +45,7 @@ It is designed to be **visual, accessible, and hands-on**, helping students conn
 | `AI-2025.pdf` | Full presentation slides |
 | `src/` | All Python demo scripts |
 | `requirements.txt` | Required Python packages |
-| `assets/` | Optional images or banner for presentation / GitHub Pages |
+| `img/` and `mov/` | Optional images or banner for presentation / GitHub Pages |
 
 ---
 
@@ -57,6 +57,8 @@ It is designed to be **visual, accessible, and hands-on**, helping students conn
 - [similarity.py](src/similarity.py) – find the most similar words in embedding space
 - [outlier.py](src/outlier.py) – find the word least similar to the group
 - [analogy.py](src/analogy.py) – analogy reasoning (*king – man + woman ≈ queen*)
+- [bert.py](src/bert.py) – get contextual embeddings with BERT
+- [sbert.py](src/sbert.py) – sentence embeddings with Sentence-BERT
 - [q_and_a.py](src/q_and_a.py) – question answering with sentence transformers
 - [heroes.py](src/heroes.py) – generative text example with Hugging Face
 
@@ -69,11 +71,12 @@ Clone the repo and install dependencies:
 ```bash
 git clone https://github.com/wolfpaulus/VEC-2-GENAI.git
 cd VEC-2-GENAI
+python -m venv ./.venv
+source .venv/bin/activate  # On Windows use: .\.venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
 Download required models for demos: `./get_models.sh`
-
 Download GPT model for local use (optional, for faster demos): `python ./src/download_gpt.py`
 
 Run any demo:

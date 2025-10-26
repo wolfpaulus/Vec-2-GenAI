@@ -1,20 +1,6 @@
 """ Find most similar words to a given input word using preprocessed GloVe embeddings """
-from sys import argv
 import numpy as np
-
-
-def load_vectors(filepath: str) -> dict[str, np.ndarray]:
-    """
-    Load GloVe vectors from a file into a dictionary
-    :param filepath: Path to the GloVe file (preprocessed and normalized)
-    :return: Dictionary mapping words to their vector representations
-    """
-    word_vectors = dict()
-    with open(filepath, "r", encoding="utf8") as f:
-        for line in f:
-            parts = line.split()
-            word_vectors[parts[0]] = np.array(parts[1:], dtype=np.float32)
-    return word_vectors
+from mdl_utils import load_vectors
 
 
 def most_similar(word: str, v: dict[str, np.ndarray], top_k: int = 10) -> list[tuple[str, float]]:
@@ -40,9 +26,7 @@ def most_similar(word: str, v: dict[str, np.ndarray], top_k: int = 10) -> list[t
 
 
 if __name__ == "__main__":
-    mdl = "models/wikigiga_50d.txt" if len(argv) != 2 else argv[1]
-    vectors = load_vectors(mdl)
-    print(f"Loaded {len(vectors):,} word vectors from {mdl}")
+    vectors = load_vectors("models/wikigiga_50d.txt")
     while True:
         target_word = input("Enter a word to find similar words: ").strip().lower()
         if target_word == "":

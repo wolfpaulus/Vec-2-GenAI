@@ -32,10 +32,10 @@ Vocabulary is now 10 words and 12 word-pairs are used.
 
 Using a larger embeddings model: GloVe
 
-### [pre-proc.py](pre_proc.py)
+### [mdl_utils.py](mdl_utils.py)
 
 This script needs to be called with source and target model file like so:
-`python src/pre_proc.py <in_filepath> <out_filepath>`
+`python src/mdl_utils.py <in_filepath> <out_filepath>`
 It pre-processes GloVe embeddings to shorten the vocabulary and normalizing the vectors.
 Only those vectors will remain, that can be found in Kaggle's '⅓ Million Most Frequent English Words on the Web'.
 All vectors are normalized (divided by their N2 norm)

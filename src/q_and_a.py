@@ -5,22 +5,20 @@ from sentence_transformers import SentenceTransformer, util
 model = SentenceTransformer("all-MiniLM-L6-v2", local_files_only=True)
 
 # Example sentences (like snippets from Treasure Island)
-sentences = [
-    "Jim Hawkins is the narrator of Treasure Island.",
-    "They set sail to find buried treasure.",
-    "The Squire and the Doctor organized the voyage.",
-    "Long John Silver is a cunning one-legged pirate.",
-    "The crew had mixed loyalties."
-]
+sentences = ["Jim Hawkins is the narrator of Treasure Island.",
+             "They set sail to find buried treasure.",
+             "The Squire and the Doctor organized the voyage.",
+             "Long John Silver is a cunning one-legged pirate.",
+             "The crew had mixed loyalties."]
 
 # Encode the sentences once
 sentence_embeddings = model.encode(sentences, convert_to_tensor=True)
 
-print("Ask me questions about Treasure Island! (type 'exit' to quit)\n")
+print("Ask me questions about Treasure Island!\n")
 while True:
     # Get user input
     question = input("Question: ")
-    if question.lower().strip() in {"exit", "quit"}:
+    if len(question.strip()) == 0:
         exit()
 
     # Encode the question
